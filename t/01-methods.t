@@ -6,8 +6,6 @@ use Test::More;
 
 use_ok 'Chemistry::PeriodicTable';
 
-new_ok 'Chemistry::PeriodicTable';
-
 my $obj = new_ok 'Chemistry::PeriodicTable';
 
 my $got = $obj->as_file;
