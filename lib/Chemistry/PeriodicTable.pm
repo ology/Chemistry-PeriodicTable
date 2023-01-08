@@ -16,7 +16,24 @@ use namespace::clean;
 
   use Chemistry::PeriodicTable ();
 
-  my $pt = Chemistry::PeriodicTable->new(verbose => 1);
+  my $pt = Chemistry::PeriodicTable->new;
+
+  my $x = $pt->as_file;
+  $x = $pt->as_hash;
+  my @headers = $pt->headers;
+
+  $pt->atomic_number('H');        # 1
+  $pt->atomic_number('hydrogen'); # 1
+
+  $pt->name(1);   # Hydrogen
+  $pt->name('H'); # Hydrogen
+
+  $pt->symbol(1); # H
+  $pt->symbol('hydrogen'); # H
+
+  $pt->value('H', 'weight');               # 1.00794
+  $pt->value(118, 'weight');               # 294
+  $pt->value('hydrogen', 'Atomic Radius'); # 0.79
 
 =head1 DESCRIPTION
 
@@ -32,7 +49,7 @@ The computed hash-reference of the element properties.
 
 =cut
 
-has data => (is => 'lazy');
+has data => (is => 'lazy', init_args => undef);
 
 sub _build_data {
     my ($self) = @_;
@@ -70,10 +87,10 @@ sub as_file {
 
   $data = $pt->as_hash;
 
-Return the data as a hash.
+Return the data as a hash reference.
 
-Keys are equal to the data column headers. See the C<headers>
-method.
+Keys are the element symbols and the values are the element
+properties.
 
 =cut
 
@@ -187,7 +204,7 @@ sub atomic_number {
   $n = $pt->name($number);
   $n = $pt->name($symbol);
 
-Return the atom name of given either an atomic number or symbol.
+Return the atom name of either an atomic number or symbol.
 
 =cut
 
@@ -212,7 +229,7 @@ sub name {
   $s = $pt->symbol($number);
   $s = $pt->symbol($name);
 
-Return the atomic symbol of given either an atomic number or name.
+Return the atomic symbol of either an atomic number or name.
 
 =cut
 
@@ -238,8 +255,8 @@ sub symbol {
   $v = $pt->value($name, $string);
   $v = $pt->value($symbol, $string);
 
-Return the atomic value of given the atomic number, name, or symbol
-and a string indicating a unique part of a header name.
+Return the atomic value of the atomic number, name, or symbol and a
+string indicating a unique part of a header name.
 
 =cut
 
@@ -270,8 +287,6 @@ __END__
 The F<t/01-methods.t> file.
 
 L<Moo>
-
-L<Carp>
 
 L<File::ShareDir>
 
