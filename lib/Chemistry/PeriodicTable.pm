@@ -57,6 +57,22 @@ sub _build_data {
     return $data;
 }
 
+=head2 header
+
+  $headers = $pt->header;
+
+The computed array-reference of the property headers.
+
+=cut
+
+has header => (is => 'lazy', init_args => undef);
+
+sub _build_header {
+    my ($self) = @_;
+    my @headers = $self->headers;
+    return \@headers;
+}
+
 =head1 METHODS
 
 =head2 new
@@ -263,8 +279,7 @@ string indicating a unique part of a header name.
 sub value {
     my ($self, $key, $string) = @_;
     my $v;
-    my @headers = $self->headers;
-    my $idx = first_index { $_ =~ /$string/i } @headers;
+    my $idx = first_index { $_ =~ /$string/i } @{ $self->header };
     if ($key !~ /^\d+$/ && length $key < 4) {
         $v = $self->data->{$key}[$idx];
     }
