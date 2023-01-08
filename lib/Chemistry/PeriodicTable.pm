@@ -2,7 +2,7 @@ package Chemistry::PeriodicTable;
 
 # ABSTRACT: Provide access to chemical element properties
 
-our $VERSION = '0.0300';
+our $VERSION = '0.0301';
 
 use Moo;
 use strictures 2;
