@@ -24,19 +24,21 @@ C<Chemistry::PeriodicTable> provides access to chemical element properties.
 
 =head1 ATTRIBUTES
 
-=head2 verbose
+=head2 data
 
-  $verbose = $pt->verbose;
+  $data = $pt->data;
 
-Show progress.
+The computed hash-reference of the element properties.
 
 =cut
 
-has verbose => (
-    is      => 'ro',
-    isa     => sub { croak "$_[0] is not a boolean" unless $_[0] =~ /^[01]$/ },
-    default => sub { 0 },
-);
+has data => (is => 'lazy');
+
+sub _build_data {
+    my ($self) = @_;
+    my $data = $self->as_hash;
+    return $data;
+}
 
 =head1 METHODS
 
@@ -167,14 +169,13 @@ Return the atomic number of either a symbol or name.
 sub atomic_number {
     my ($self, $string) = @_;
     my $n;
-    my $data = $self->as_hash;
     if (length $string < 4) {
-        $n = $data->{ ucfirst $string }[0];
+        $n = $self->data->{ ucfirst $string }[0];
     }
     else {
-        for my $symbol (keys %$data) {
-            if (lc $data->{$symbol}[1] eq lc $string) {
-                $n = $data->{$symbol}[0];
+        for my $symbol (keys %{ $self->data }) {
+            if (lc $self->data->{$symbol}[1] eq lc $string) {
+                $n = $self->data->{$symbol}[0];
             }
         }
     }
@@ -193,14 +194,13 @@ Return the atom name of given either an atomic number or symbol.
 sub name {
     my ($self, $string) = @_;
     my $n;
-    my $data = $self->as_hash;
-    for my $symbol (keys %$data) {
+    for my $symbol (keys %{ $self->data }) {
         if (
-            ($string =~ /^\d+$/ && $data->{$symbol}[0] == $string)
+            ($string =~ /^\d+$/ && $self->data->{$symbol}[0] == $string)
             ||
-            (lc $data->{$symbol}[2] eq lc $string)
+            (lc $self->data->{$symbol}[2] eq lc $string)
         ) {
-            $n = $data->{$symbol}[1];
+            $n = $self->data->{$symbol}[1];
             last;
         }
     }
@@ -219,12 +219,11 @@ Return the atomic symbol of given either an atomic number or name.
 sub symbol {
     my ($self, $string) = @_;
     my $s;
-    my $data = $self->as_hash;
-    for my $symbol (keys %$data) {
+    for my $symbol (keys %{ $self->data }) {
         if (
-            ($string =~ /^\d+$/ && $data->{$symbol}[0] == $string)
+            ($string =~ /^\d+$/ && $self->data->{$symbol}[0] == $string)
             ||
-            (lc $data->{$symbol}[1] eq lc $string)
+            (lc $self->data->{$symbol}[1] eq lc $string)
         ) {
             $s = $symbol;
             last;
@@ -247,17 +246,16 @@ and a string indicating a unique part of a header name.
 sub value {
     my ($self, $key, $string) = @_;
     my $v;
-    my $data = $self->as_hash;
     my @headers = $self->headers;
     my $idx = first_index { $_ =~ /$string/i } @headers;
     if ($key !~ /^\d+$/ && length $key < 4) {
-        $v = $data->{$key}[$idx];
+        $v = $self->data->{$key}[$idx];
     }
     else {
         $key = $self->symbol($key);
-        for my $symbol (keys %$data) {
+        for my $symbol (keys %{ $self->data }) {
             next unless $symbol eq $key;
-            $v = $data->{$symbol}[$idx];
+            $v = $self->data->{$symbol}[$idx];
             last;
         }
     }
