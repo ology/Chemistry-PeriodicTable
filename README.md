@@ -1,2 +1,2 @@
-# Chemistry-PeriodicTable
-Access to chemical element properties
+# Chemistry::PeriodicTable
+Access with perl to chemical element properties
