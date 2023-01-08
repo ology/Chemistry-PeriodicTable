@@ -1,0 +1,5 @@
+Revision history for Chemistry-PeriodicTable
+
+{{$NEXT}}
+    - Filled in the blanks AKA everything except the CSV.
+    - Mint with Dist::Zilla.
