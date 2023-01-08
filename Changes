@@ -1,5 +1,8 @@
 Revision history for Chemistry-PeriodicTable
 
 {{$NEXT}}
+    - Make the hash data a proper attribute.
+
+0.0100 2023-01-08 02:58:42
     - Filled in the blanks AKA everything except the CSV.
     - Mint with Dist::Zilla.
