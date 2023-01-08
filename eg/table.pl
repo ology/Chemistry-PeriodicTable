@@ -69,7 +69,6 @@ __DATA__
   </head>
   <body>
     <div class="padpage">
-      <h3><a href="<%= url_for('index') %>"><%= title %></a></h3>
 <%= content %>
       <p></p>
       <div class="small">
