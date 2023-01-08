@@ -15,7 +15,7 @@ my $obj = new_ok 'Chemistry::PeriodicTable' => [
 is $obj->verbose, 1, 'verbose';
 
 my $got = $obj->as_file;
-is $got, 'share/Periodic-Table.csv', 'as_file';
+ok -e $got, 'as_file';
 
 my @headers = $obj->headers;
 
