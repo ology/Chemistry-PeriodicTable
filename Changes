@@ -1,6 +1,8 @@
 Revision history for Chemistry-PeriodicTable
 
 {{$NEXT}}
+
+0.0300 2023-01-08 12:17:33
     - Make headers an attribute.
     - Add a WIP table display mojo app.
 
