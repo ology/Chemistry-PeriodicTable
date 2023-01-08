@@ -8,11 +8,7 @@ use_ok 'Chemistry::PeriodicTable';
 
 new_ok 'Chemistry::PeriodicTable';
 
-my $obj = new_ok 'Chemistry::PeriodicTable' => [
-    verbose => 1,
-];
-
-is $obj->verbose, 1, 'verbose';
+my $obj = new_ok 'Chemistry::PeriodicTable';
 
 my $got = $obj->as_file;
 ok -e $got, 'as_file';
