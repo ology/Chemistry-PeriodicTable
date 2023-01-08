@@ -28,7 +28,7 @@ use namespace::clean;
   $pt->name(1);   # Hydrogen
   $pt->name('H'); # Hydrogen
 
-  $pt->symbol(1); # H
+  $pt->symbol(1);          # H
   $pt->symbol('hydrogen'); # H
 
   $pt->value('H', 'weight');               # 1.00794
