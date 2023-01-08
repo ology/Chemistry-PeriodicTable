@@ -13,6 +13,7 @@ ok -e $got, 'as_file';
 
 my @headers = $obj->headers;
 is @headers, 21, 'headers';
+is_deeply \@headers, $obj->header, 'header';
 
 $got = $obj->as_hash;
 is_deeply [ @{ $got->{H} }[0,1] ], [1, 'Hydrogen'], 'as_hash';
