@@ -81,7 +81,6 @@ sub as_hash {
     my $file = $self->as_file;
 
     my %data;
-    my @headers;
 
     my $csv = Text::CSV_XS->new({ binary => 1 });
 
