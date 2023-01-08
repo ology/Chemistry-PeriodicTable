@@ -1,6 +1,7 @@
 Revision history for Chemistry-PeriodicTable
 
 {{$NEXT}}
+    - Add tests.
 
 0.0201 2023-01-08 11:25:47
     - Improve documentation.
