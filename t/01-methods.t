@@ -19,6 +19,8 @@ is @headers, 21, 'headers';
 $got = $obj->as_hash;
 is_deeply [ @{ $got->{H} }[0,1] ], [1, 'Hydrogen'], 'as_hash';
 
+is_deeply $got, $obj->data, 'data';
+
 is $obj->atomic_number('H'), 1, 'atomic_number';
 is $obj->atomic_number('hydrogen'), 1, 'atomic_number';
 
