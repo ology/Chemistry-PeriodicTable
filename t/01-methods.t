@@ -33,5 +33,6 @@ is $obj->symbol('hydrogen'), 'H', 'symbol';
 
 is $obj->value('H', 'weight'), 1.00794, 'weight';
 is $obj->value(118, 'weight'), 294, 'weight';
+is $obj->value('hydrogen', 'Atomic Radius'), 0.79, 'Atomic Radius';
 
 done_testing();
