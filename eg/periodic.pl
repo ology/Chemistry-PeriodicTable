@@ -22,18 +22,18 @@ __DATA__
 <table class="table table-sm table-bordered">
   <tbody>
 % my $types = {
-%   'Nonmetal' => 'lightgreen',
-%   'Noble Gas' => 'plum',
+%   '' => 'gainsboro',
+%   'Actinide' => 'pink',
 %   'Alkali Metal' => 'gold',
 %   'Alkaline Earth Metal' => 'lightyellow',
+%   'Halogen' => 'lime',
+%   'Lanthanide' => 'wheat',
 %   'Metal' => 'lightblue',
 %   'Metalloid' => 'lightcyan',
-%   '' => 'gainsboro',
-%   'Transition Metal' => 'coral',
+%   'Noble Gas' => 'plum',
+%   'Nonmetal' => 'lightgreen',
 %   'Transactinide' => 'lavender',
-%   'Lanthanide' => 'wheat',
-%   'Halogen' => 'lime',
-%   'Actinide' => 'pink',
+%   'Transition Metal' => 'coral',
 % };
 % for my $row (1 .. 9) {
     <tr>
