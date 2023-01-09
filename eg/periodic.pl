@@ -21,6 +21,10 @@ __DATA__
 % layout 'default';
 <table class="table table-sm table-hover table-bordered">
   <tbody>
+% my $types = {
+%   'Nonmetal' => 'lightgreen',
+%   'Noble Gas' => 'lightsalmon',
+% };
 % for my $row (1 .. 9) {
     <tr>
 %   my $col = 0;
@@ -37,7 +41,7 @@ __DATA__
 %     if ($row >= 6 && $col == 3) {
       <td>&nbsp;</td>
 %     }
-      <td title="<%= $elements->{$i}[1] %>"><%= $elements->{$i}[0] %><br><b><%= $elements->{$i}[2] %></b><br><%= $elements->{$i}[3] %></td>
+      <td title="<%= $elements->{$i}[1] %>" style="background-color: <%= $types->{$elements->{$i}[8] } %>;"><%= $elements->{$i}[0] %><br><b><%= $elements->{$i}[2] %></b><br><%= $elements->{$i}[3] %></td>
 %   }
     </tr>
 % }
