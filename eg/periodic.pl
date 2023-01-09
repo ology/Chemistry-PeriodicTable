@@ -27,9 +27,13 @@ __DATA__
 %   'Alkali Metal' => 'gold',
 %   'Alkaline Earth Metal' => 'lightyellow',
 %   'Metal' => 'lightblue',
-%   'Metalloid' => 'cyan',
+%   'Metalloid' => 'lightcyan',
 %   'Unknown' => 'cyan',
 %   'Transition Metal' => 'coral',
+%   'Transactinide' => 'lavender',
+%   'Lanthanide' => 'wheat',
+%   'Halogen' => 'lime',
+%   'Actinide' => 'pink',
 % };
 % for my $row (1 .. 9) {
     <tr>
