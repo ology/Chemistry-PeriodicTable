@@ -34,7 +34,7 @@ __DATA__
 %         $col++;
 %       }
 %     }
-      <td><%= $elements->{$i}[0] %><br><b><%= $elements->{$i}[2] %></b></td>
+      <td><%= $elements->{$i}[0] %><br><b><%= $elements->{$i}[2] %></b><br><%= $elements->{$i}[3] %></td>
 %   }
     </tr>
 % }
