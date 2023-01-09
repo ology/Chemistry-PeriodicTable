@@ -19,13 +19,17 @@ __DATA__
 
 @@ index.html.ep
 % layout 'default';
-<table class="table table-sm table-hover table-bordered">
+<table class="table table-sm table-bordered">
   <tbody>
 % my $types = {
 %   'Nonmetal' => 'lightgreen',
-%   'Noble Gas' => 'lightsalmon',
+%   'Noble Gas' => 'plum',
 %   'Alkali Metal' => 'gold',
 %   'Alkaline Earth Metal' => 'lightyellow',
+%   'Metal' => 'lightblue',
+%   'Metalloid' => 'cyan',
+%   'Unknown' => 'cyan',
+%   'Transition Metal' => 'coral',
 % };
 % for my $row (1 .. 9) {
     <tr>
