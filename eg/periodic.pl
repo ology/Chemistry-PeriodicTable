@@ -93,6 +93,10 @@ __DATA__
       .danger {
         color: red;
       }
+      table {
+        border-collapse: separate;
+        border-spacing: 0.1em;
+      }
     </style>
   </head>
   <body>
