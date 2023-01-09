@@ -50,7 +50,9 @@ __DATA__
 %     if ($row >= 6 && $col == 3) {
       <td>&nbsp;</td>
 %     }
-      <td title="<%= $elements->{$i}[1] %>" style="background-color: <%= $types->{ $elements->{$i}[8] } %>;"><%= $elements->{$i}[0] %><br><b><%= $elements->{$i}[2] %></b><br><%= $elements->{$i}[3] %></td>
+      <td title="<%= $elements->{$i}[1] %>" style="background-color: <%= $types->{ $elements->{$i}[8] } %>;">
+        <%= $elements->{$i}[0] %><br><b><%= $elements->{$i}[2] %></b><br><%= sprintf '%.3f', $elements->{$i}[3] %>
+      </td>
 %   }
     </tr>
 % }
