@@ -28,16 +28,15 @@ __DATA__
 %   unknown => 'gray',
 % };
 % my $types = {
-%   '' => 'gainsboro',
+%   ''                      => 'gainsboro',
 %   'Actinide'              => 'pink',
-%   'Alkali Metal'          => 'gold',
-%   'Alkaline Earth Metal'  => 'lightyellow',
+%   'Alkali Metal'          => 'bisque',
+%   'Alkaline Earth Metal'  => 'lemonchiffon',
 %   'Lanthanide'            => 'wheat',
 %   'Transition Metal'      => 'sandybrown',
 %   'Metalloid'             => 'lightcyan',
 %   'Noble Gas'             => 'plum',
 %   'Reactive Nonmetal'     => 'lightgreen',
-%   'Transactinide'         => 'lavender',
 %   'Post-transition Metal' => 'lightblue',
 % };
 % for my $row (1 .. 9) {
