@@ -19,7 +19,7 @@ __DATA__
 
 @@ index.html.ep
 % layout 'default';
-<table class="table table-sm table-bordered">
+<table class="table table-sm table-borderless">
   <tbody>
 % my $phases = {
 %   gas     => 'red',
@@ -95,7 +95,10 @@ __DATA__
       }
       table {
         border-collapse: separate;
-        border-spacing: 0.1em;
+        border-spacing: 0.2em;
+      }
+      .table thead tr th, .table tbody tr td {
+          border: none;
       }
     </style>
   </head>
