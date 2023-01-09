@@ -24,6 +24,8 @@ __DATA__
 % my $types = {
 %   'Nonmetal' => 'lightgreen',
 %   'Noble Gas' => 'lightsalmon',
+%   'Alkali Metal' => 'gold',
+%   'Alkaline Earth Metal' => 'lightyellow',
 % };
 % for my $row (1 .. 9) {
     <tr>
