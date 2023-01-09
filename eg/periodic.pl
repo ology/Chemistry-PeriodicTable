@@ -21,6 +21,12 @@ __DATA__
 % layout 'default';
 <table class="table table-sm table-bordered">
   <tbody>
+% my $phases = {
+%   gas => 'red',
+%   liquid => 'blue',
+%   solid => 'black',
+%   artificial => 'gray',
+% };
 % my $types = {
 %   '' => 'gainsboro',
 %   'Actinide' => 'pink',
@@ -51,7 +57,11 @@ __DATA__
       <td>&nbsp;</td>
 %     }
       <td title="<%= $elements->{$i}[1] %>" style="background-color: <%= $types->{ $elements->{$i}[8] } %>;">
-        <%= $elements->{$i}[0] %><br><b><%= $elements->{$i}[2] %></b><br><%= sprintf '%.3f', $elements->{$i}[3] %>
+        <%= $elements->{$i}[0] %>
+        <br>
+        <b><span style="color: <%= $phases->{ $elements->{$i}[6] } %>"><%= $elements->{$i}[2] %></span></b>
+        <br>
+        <%= sprintf '%.3f', $elements->{$i}[3] %>
       </td>
 %   }
     </tr>
