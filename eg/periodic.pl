@@ -57,7 +57,9 @@ __DATA__
 %     if ($row >= 6 && $col == 3) {
       <td>&nbsp;</td>
 %     }
-      <td title="<%= $elements->{$i}[1] %>" style="background-color: <%= $types->{ $elements->{$i}[8] } %>;">
+      <td title="<%= $elements->{$i}[1] %>
+Phase: <%= $elements->{$i}[6] %>
+Type: <%= $elements->{$i}[8] %>" style="background-color: <%= $types->{ $elements->{$i}[8] } %>;">
         <%= $elements->{$i}[0] %>
         <br>
         <b><span style="color: <%= $phases->{ $elements->{$i}[6] } %>"><%= $elements->{$i}[2] %></span></b>
