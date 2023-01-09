@@ -34,6 +34,9 @@ __DATA__
 %         $col++;
 %       }
 %     }
+%     if ($row >= 6 && $col == 3) {
+      <td>&nbsp;</td>
+%     }
       <td><%= $elements->{$i}[0] %><br><b><%= $elements->{$i}[2] %></b><br><%= $elements->{$i}[3] %></td>
 %   }
     </tr>
