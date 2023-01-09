@@ -22,22 +22,22 @@ __DATA__
 <table class="table table-sm table-bordered">
   <tbody>
 % my $phases = {
-%   gas => 'red',
-%   liquid => 'blue',
-%   solid => 'black',
-%   artificial => 'gray',
+%   gas     => 'red',
+%   liquid  => 'blue',
+%   solid   => 'black',
+%   unknown => 'gray',
 % };
 % my $types = {
 %   '' => 'gainsboro',
-%   'Actinide' => 'pink',
-%   'Alkali Metal' => 'gold',
-%   'Alkaline Earth Metal' => 'lightyellow',
-%   'Lanthanide' => 'wheat',
-%   'Transition Metal' => 'coral',
-%   'Metalloid' => 'lightcyan',
-%   'Noble Gas' => 'plum',
-%   'Reactive Nonmetal' => 'lightgreen',
-%   'Transactinide' => 'lavender',
+%   'Actinide'              => 'pink',
+%   'Alkali Metal'          => 'gold',
+%   'Alkaline Earth Metal'  => 'lightyellow',
+%   'Lanthanide'            => 'wheat',
+%   'Transition Metal'      => 'sandybrown',
+%   'Metalloid'             => 'lightcyan',
+%   'Noble Gas'             => 'plum',
+%   'Reactive Nonmetal'     => 'lightgreen',
+%   'Transactinide'         => 'lavender',
 %   'Post-transition Metal' => 'lightblue',
 % };
 % for my $row (1 .. 9) {
