@@ -7,9 +7,29 @@ use Chemistry::PeriodicTable ();
 get '/' => sub ($c) {
   my $pt = Chemistry::PeriodicTable->new;
   my $elements = $pt->data;
+  my $phases = {
+    gas     => 'red',
+    liquid  => 'blue',
+    solid   => 'black',
+    unknown => 'gray',
+  };
+  my $types = {
+    ''                      => 'gainsboro',
+    'Actinide'              => 'pink',
+    'Alkali Metal'          => 'bisque',
+    'Alkaline Earth Metal'  => 'lemonchiffon',
+    'Lanthanide'            => 'wheat',
+    'Transition Metal'      => 'sandybrown',
+    'Metalloid'             => 'lightcyan',
+    'Noble Gas'             => 'plum',
+    'Reactive Nonmetal'     => 'lightgreen',
+    'Post-transition Metal' => 'lightblue',
+  };
   $c->render(
     template => 'index',
     elements => $elements,
+    phases   => $phases,
+    types    => $types,
   );
 } => 'index';
 
@@ -21,24 +41,6 @@ __DATA__
 % layout 'default';
 <table class="table table-sm table-borderless">
   <tbody>
-% my $phases = {
-%   gas     => 'red',
-%   liquid  => 'blue',
-%   solid   => 'black',
-%   unknown => 'gray',
-% };
-% my $types = {
-%   ''                      => 'gainsboro',
-%   'Actinide'              => 'pink',
-%   'Alkali Metal'          => 'bisque',
-%   'Alkaline Earth Metal'  => 'lemonchiffon',
-%   'Lanthanide'            => 'wheat',
-%   'Transition Metal'      => 'sandybrown',
-%   'Metalloid'             => 'lightcyan',
-%   'Noble Gas'             => 'plum',
-%   'Reactive Nonmetal'     => 'lightgreen',
-%   'Post-transition Metal' => 'lightblue',
-% };
 % for my $row (1 .. 9) {
     <tr>
 %   my $col = 0;
