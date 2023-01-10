@@ -1,7 +1,7 @@
 Revision history for Chemistry-PeriodicTable
 
 {{$NEXT}}
-    - Improve the eg/periodic.pl again!
+    - Improve eg/periodic.pl again!
 
 0.0303 2023-01-09 07:10:06
     - Fix element types again.
