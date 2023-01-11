@@ -18,7 +18,7 @@ use namespace::clean;
 
   my $pt = Chemistry::PeriodicTable->new;
 
-  my $x = $pt->as_file;
+  my $filename = $pt->as_file;
 
   my @headers = $pt->headers;
   my $symbols = $pt->symbols; # elements by symbol
