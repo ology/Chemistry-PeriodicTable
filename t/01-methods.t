@@ -20,8 +20,8 @@ is_deeply [ @{ $got->{H} }[0,1] ], [1, 'Hydrogen'], 'as_hash';
 
 is_deeply $got, $obj->symbols, 'symbols';
 
-is $obj->atomic_number('H'), 1, 'atomic_number';
-is $obj->atomic_number('hydrogen'), 1, 'atomic_number';
+is $obj->number('H'), 1, 'number';
+is $obj->number('hydrogen'), 1, 'number';
 
 is $obj->name(1), 'Hydrogen', 'name';
 is $obj->name('H'), 'Hydrogen', 'name';

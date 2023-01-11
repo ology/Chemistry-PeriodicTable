@@ -23,8 +23,8 @@ use namespace::clean;
   my @headers = $pt->headers;
   my $symbols = $pt->symbols; # element properties keyed by symbol
 
-  $pt->atomic_number('H');        # 1
-  $pt->atomic_number('hydrogen'); # 1
+  $pt->number('H');        # 1
+  $pt->number('hydrogen'); # 1
 
   $pt->name(1);   # Hydrogen
   $pt->name('H'); # Hydrogen
@@ -191,16 +191,16 @@ sub headers {
     return @headers;
 }
 
-=head2 atomic_number
+=head2 number
 
-  $n = $pt->atomic_number($symbol);
-  $n = $pt->atomic_number($name);
+  $n = $pt->number($symbol);
+  $n = $pt->number($name);
 
 Return the atomic number of either a symbol or name.
 
 =cut
 
-sub atomic_number {
+sub number {
     my ($self, $string) = @_;
     my $n;
     if (length $string < 4) {
