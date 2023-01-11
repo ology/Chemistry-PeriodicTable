@@ -6,7 +6,7 @@ use Chemistry::PeriodicTable ();
 
 get '/' => sub ($c) {
   my $pt = Chemistry::PeriodicTable->new;
-  my $elements = $pt->data;
+  my $elements = $pt->symbols;
   my $phases = {
     gas     => 'red',
     liquid  => 'blue',
