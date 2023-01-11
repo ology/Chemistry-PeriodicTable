@@ -19,8 +19,9 @@ use namespace::clean;
   my $pt = Chemistry::PeriodicTable->new;
 
   my $x = $pt->as_file;
-  $x = $pt->as_hash;
+
   my @headers = $pt->headers;
+  my $symbols = $pt->symbols; # elements by symbol
 
   $pt->atomic_number('H');        # 1
   $pt->atomic_number('hydrogen'); # 1
@@ -41,20 +42,20 @@ C<Chemistry::PeriodicTable> provides access to chemical element properties.
 
 =head1 ATTRIBUTES
 
-=head2 data
+=head2 symbols
 
-  $data = $pt->data;
+  $symbols = $pt->symbols;
 
 The computed hash-reference of the element properties.
 
 =cut
 
-has data => (is => 'lazy', init_args => undef);
+has symbols => (is => 'lazy', init_args => undef);
 
-sub _build_data {
+sub _build_symbols {
     my ($self) = @_;
-    my $data = $self->as_hash;
-    return $data;
+    my $symbols = $self->as_hash;
+    return $symbols;
 }
 
 =head2 header
@@ -203,12 +204,12 @@ sub atomic_number {
     my ($self, $string) = @_;
     my $n;
     if (length $string < 4) {
-        $n = $self->data->{ ucfirst $string }[0];
+        $n = $self->symbols->{ ucfirst $string }[0];
     }
     else {
-        for my $symbol (keys %{ $self->data }) {
-            if (lc $self->data->{$symbol}[1] eq lc $string) {
-                $n = $self->data->{$symbol}[0];
+        for my $symbol (keys %{ $self->symbols }) {
+            if (lc $self->symbols->{$symbol}[1] eq lc $string) {
+                $n = $self->symbols->{$symbol}[0];
             }
         }
     }
@@ -227,13 +228,13 @@ Return the atom name of either an atomic number or symbol.
 sub name {
     my ($self, $string) = @_;
     my $n;
-    for my $symbol (keys %{ $self->data }) {
+    for my $symbol (keys %{ $self->symbols }) {
         if (
-            ($string =~ /^\d+$/ && $self->data->{$symbol}[0] == $string)
+            ($string =~ /^\d+$/ && $self->symbols->{$symbol}[0] == $string)
             ||
-            (lc $self->data->{$symbol}[2] eq lc $string)
+            (lc $self->symbols->{$symbol}[2] eq lc $string)
         ) {
-            $n = $self->data->{$symbol}[1];
+            $n = $self->symbols->{$symbol}[1];
             last;
         }
     }
@@ -252,11 +253,11 @@ Return the atomic symbol of either an atomic number or name.
 sub symbol {
     my ($self, $string) = @_;
     my $s;
-    for my $symbol (keys %{ $self->data }) {
+    for my $symbol (keys %{ $self->symbols }) {
         if (
-            ($string =~ /^\d+$/ && $self->data->{$symbol}[0] == $string)
+            ($string =~ /^\d+$/ && $self->symbols->{$symbol}[0] == $string)
             ||
-            (lc $self->data->{$symbol}[1] eq lc $string)
+            (lc $self->symbols->{$symbol}[1] eq lc $string)
         ) {
             $s = $symbol;
             last;
@@ -281,13 +282,13 @@ sub value {
     my $v;
     my $idx = first_index { $_ =~ /$string/i } @{ $self->header };
     if ($key !~ /^\d+$/ && length $key < 4) {
-        $v = $self->data->{$key}[$idx];
+        $v = $self->symbols->{$key}[$idx];
     }
     else {
         $key = $self->symbol($key);
-        for my $symbol (keys %{ $self->data }) {
+        for my $symbol (keys %{ $self->symbols }) {
             next unless $symbol eq $key;
-            $v = $self->data->{$symbol}[$idx];
+            $v = $self->symbols->{$symbol}[$idx];
             last;
         }
     }
