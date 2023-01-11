@@ -20,7 +20,7 @@ use namespace::clean;
 
   my $filename = $pt->as_file;
 
-  my @headers = $pt->header;
+  my $headers = $pt->header;
   my $symbols = $pt->symbols; # element properties keyed by symbol
 
   $pt->number('H');        # 1
