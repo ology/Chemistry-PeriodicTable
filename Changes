@@ -2,7 +2,7 @@ Revision history for Chemistry-PeriodicTable
 
 {{$NEXT}}
     - Improve eg/periodic.pl again!
-    - Improve variable, attribute, and subroutine names.
+    - Improve variable and attribute names.
 
 0.0303 2023-01-09 07:10:06
     - Fix element types again.
