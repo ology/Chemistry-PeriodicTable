@@ -21,7 +21,7 @@ use namespace::clean;
   my $filename = $pt->as_file;
 
   my @headers = $pt->headers;
-  my $symbols = $pt->symbols; # elements by symbol
+  my $symbols = $pt->symbols; # element properties keyed by symbol
 
   $pt->atomic_number('H');        # 1
   $pt->atomic_number('hydrogen'); # 1
