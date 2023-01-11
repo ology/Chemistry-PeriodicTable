@@ -38,4 +38,4 @@ for my $symbol (sort { $pt->symbols->{$a}[0] <=> $pt->symbols->{$b}[0] } keys $p
 $chart->add_dataset(1 .. @data);
 $chart->add_dataset(@data);
 
-$chart->png("$property-per-element");
+$chart->png("$property-per-element.png");
