@@ -1,6 +1,8 @@
 Revision history for Chemistry-PeriodicTable
 
 {{$NEXT}}
+
+0.0400 2023-01-11 08:33:26
     - Improve eg/periodic.pl again!
     - Improve variable and attribute names.
     - Add the eg/element-property.pl plotting program.
