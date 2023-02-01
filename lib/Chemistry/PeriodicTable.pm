@@ -54,8 +54,30 @@ has symbols => (is => 'lazy', init_args => undef);
 
 sub _build_symbols {
     my ($self) = @_;
-    my $symbols = $self->as_hash;
-    return $symbols;
+
+    my $file = $self->as_file;
+
+    my %data;
+
+    my $csv = Text::CSV_XS->new({ binary => 1 });
+
+    open my $fh, '<', $file
+        or die "Can't read $file: $!";
+
+    my $counter = 0;
+
+    while (my $row = $csv->getline($fh)) {
+        $counter++;
+
+        # skip the first row
+        next if $counter == 1;
+
+        $data{ $row->[2] } = $row;
+    }
+
+    close $fh;
+
+    return \%data;
 }
 
 =head2 header
@@ -98,45 +120,6 @@ sub as_file {
         unless $file && -e $file;
 
     return $file;
-}
-
-=head2 as_hash
-
-  $data = $pt->as_hash;
-
-Return the data as a hash reference.
-
-Keys are the element symbols and the values are the element
-properties.
-
-=cut
-
-sub as_hash {
-    my ($self) = @_;
-
-    my $file = $self->as_file;
-
-    my %data;
-
-    my $csv = Text::CSV_XS->new({ binary => 1 });
-
-    open my $fh, '<', $file
-        or die "Can't read $file: $!";
-
-    my $counter = 0;
-
-    while (my $row = $csv->getline($fh)) {
-        $counter++;
-
-        # skip the first row
-        next if $counter == 1;
-
-        $data{ $row->[2] } = $row;
-    }
-
-    close $fh;
-
-    return \%data;
 }
 
 =head2 headers
