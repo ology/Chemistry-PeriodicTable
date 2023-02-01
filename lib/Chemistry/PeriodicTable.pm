@@ -86,13 +86,53 @@ sub _build_symbols {
 
 The computed array-reference of the property headers.
 
+These are:
+
+   0 Atomic Number
+   1 Element
+   2 Symbol
+   3 Atomic Weight
+   4 Period
+   5 Group
+   6 Phase
+   7 Most Stable Crystal
+   8 Type
+   9 Ionic Radius
+  10 Atomic Radius
+  11 Electronegativity
+  12 First Ionization Potential
+  13 Density
+  14 Melting Point (K)
+  15 Boiling Point (K)
+  16 Isotopes
+  17 Specific Heat Capacity
+  18 Electron Configuration
+  19 Display Row
+  20 Display Column
+
 =cut
 
 has header => (is => 'lazy', init_args => undef);
 
 sub _build_header {
     my ($self) = @_;
-    my @headers = $self->headers;
+
+    my $file = $self->as_file;
+
+    my @headers;
+
+    my $csv = Text::CSV_XS->new({ binary => 1 });
+
+    open my $fh, '<', $file
+        or die "Can't read $file: $!";
+
+    while (my $row = $csv->getline($fh)) {
+        push @headers, @$row;
+        last;
+    }
+
+    close $fh;
+
     return \@headers;
 }
 
@@ -120,58 +160,6 @@ sub as_file {
         unless $file && -e $file;
 
     return $file;
-}
-
-=head2 headers
-
-  @headers = $pt->headers;
-
-Return the data headers. These are:
-
-  Atomic Number
-  Element
-  Symbol
-  Atomic Weight
-  Period
-  Group
-  Phase
-  Most Stable Crystal
-  Type
-  Ionic Radius
-  Atomic Radius
-  Electronegativity
-  First Ionization Potential
-  Density
-  Melting Point (K)
-  Boiling Point (K)
-  Isotopes
-  Specific Heat Capacity
-  Electron Configuration
-  Display Row
-  Display Column
-
-=cut
-
-sub headers {
-    my ($self) = @_;
-
-    my $file = $self->as_file;
-
-    my @headers;
-
-    my $csv = Text::CSV_XS->new({ binary => 1 });
-
-    open my $fh, '<', $file
-        or die "Can't read $file: $!";
-
-    while (my $row = $csv->getline($fh)) {
-        push @headers, @$row;
-        last;
-    }
-
-    close $fh;
-
-    return @headers;
 }
 
 =head2 number
