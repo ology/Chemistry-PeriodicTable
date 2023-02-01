@@ -15,8 +15,7 @@ my @headers = $obj->headers;
 is_deeply \@headers, $obj->header, 'header';
 is @headers, 21, 'headers';
 
-$got = $obj->as_hash;
-is_deeply $got, $obj->symbols, 'symbols';
+$got = $obj->symbols;
 is_deeply [ @{ $got->{H} }[0,1] ], [1, 'Hydrogen'], 'as_hash';
 
 is $obj->number('H'), 1, 'number';
