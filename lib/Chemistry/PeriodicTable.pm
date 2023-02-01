@@ -46,7 +46,7 @@ C<Chemistry::PeriodicTable> provides access to chemical element properties.
 
   $symbols = $pt->symbols;
 
-The computed hash-reference of the element properties.
+The computed hash-reference of the element properties keyed by symbol.
 
 =cut
 
@@ -78,7 +78,7 @@ sub _build_header {
 
 =head2 new
 
-  $pt = Chemistry::PeriodicTable->new(verbose => 1);
+  $pt = Chemistry::PeriodicTable->new;
 
 Create a new C<Chemistry::PeriodicTable> object.
 
