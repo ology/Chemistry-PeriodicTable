@@ -174,13 +174,16 @@ Return the atomic number of either a symbol or name.
 sub number {
     my ($self, $string) = @_;
     my $n;
+    # looking for a symbol
     if (length $string < 4) {
         $n = $self->symbols->{ ucfirst $string }[0];
     }
+    # looking for an element name
     else {
         for my $symbol (keys %{ $self->symbols }) {
             if (lc $self->symbols->{$symbol}[1] eq lc $string) {
                 $n = $self->symbols->{$symbol}[0];
+                last;
             }
         }
     }
