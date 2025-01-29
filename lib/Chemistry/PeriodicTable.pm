@@ -107,8 +107,9 @@ These are:
   16 Isotopes
   17 Specific Heat Capacity
   18 Electron Configuration
-  19 Display Row
-  20 Display Column
+  19 Element origin
+  20 Display Row
+  21 Display Column
 
 =cut
 
