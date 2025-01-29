@@ -35,6 +35,7 @@ use namespace::clean;
   $pt->value('H', 'weight');               # 1.00794
   $pt->value(118, 'weight');               # 294
   $pt->value('hydrogen', 'Atomic Radius'); # 0.79
+  $pt->value('Mg', 'origin');              # Dying high-mass stars
 
 =head1 DESCRIPTION
 
