@@ -1,7 +1,7 @@
 Revision history for Chemistry-PeriodicTable
 
 {{$NEXT}}
-    - Add the very-cool element origin data column.
+    - Add the very-cool element origin data.
 
 0.0501 2023-02-01 15:09:46
     - Add a crucial `last;` to the number() loop.
